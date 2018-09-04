@@ -1,0 +1,49 @@
+{
+  "name": "ti4-planet-tracker",
+  "version": "1.0.0",
+  "description": "Handy website for tracking your planets in Twilight Imperium 4",
+  "main": "server.dev.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vitreum",
+    "dev": "vitreum --dev",
+    "prod": "cross-env NODE_ENV=production vitreum",
+    "postinstall": "npm run build",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stolksdorf/ti4-planet-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stolksdorf/ti4-planet-tracker/issues"
+  },
+  "homepage": "https://github.com/stolksdorf/ti4-planet-tracker#readme",
+  "vitreum": {
+    "targets": [
+      "client/main/main.jsx"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "classnames": "^2.2.6",
+    "create-react-class": "^15.6.3",
+    "express": "^4.16.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "vitreum": "^5.1.0"
+  }
+}
