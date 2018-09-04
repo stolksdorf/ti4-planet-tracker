@@ -5,9 +5,8 @@
   "main": "server.dev.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vitreum",
+    "build": "node build.script.js",
     "dev": "vitreum --dev",
-    "prod": "cross-env NODE_ENV=production vitreum",
     "postinstall": "npm run build",
     "start": "node app.js"
   },
@@ -25,7 +24,10 @@
   "vitreum": {
     "targets": [
       "client/main/main.jsx"
-    ]
+    ],
+    "paths"  : {
+      "build"  : "./docs"
+    }
   },
   "babel": {
     "presets": [

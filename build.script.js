@@ -6,9 +6,8 @@ build().then(()=>{
 
 	console.log('done!');
 
-	const render = require('./build/main/render.js');
+	const render = require('./docs/main/render.js');
 
-	fs.writeFileSync('./index.html', render())
-
+	fs.writeFileSync('./docs/index.html', render())
 
 })
