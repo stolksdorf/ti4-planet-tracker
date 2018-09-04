@@ -10,9 +10,9 @@ build().then(()=>{
 	const render = require('./docs/main/render.js');
 
 	fs.writeFileSync('./docs/index.html', render()
-		.replace('/libs.js', 'docs/libs.js')
-		.replaceAll('/main/bundle', 'docs/main/bundle')
-		.replaceAll('/assets', 'docs/assets')
+		// .replace('/libs.js', 'docs/libs.js')
+		// .replaceAll('/main/bundle', 'docs/main/bundle')
+		// .replaceAll('/assets', 'docs/assets')
 	)
 	console.log('Built index.html');
 })
