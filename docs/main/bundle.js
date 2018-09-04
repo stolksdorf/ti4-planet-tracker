@@ -15,7 +15,7 @@ const Main = createClass({
   },
 
   render() {
-    console.log('test');
+    console.log('test2');
     return React.createElement("div", {
       className: "Main"
     }, "Main Component Ready.");

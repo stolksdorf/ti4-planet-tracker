@@ -11,7 +11,7 @@ const Main = createClass({
 		};
 	},
 	render(){
-		console.log('test');
+		console.log('test2');
 		return <div className='Main'>
 			Main Component Ready.
 		</div>;
