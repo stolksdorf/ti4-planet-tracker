@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.script.js",
     "dev": "vitreum --dev",
-    "postinstall": "npm run build",
     "start": "node app.js"
   },
   "repository": {

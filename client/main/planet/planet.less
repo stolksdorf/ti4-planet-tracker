@@ -1,0 +1,25 @@
+
+.Planets{
+}
+.Planet{
+	display : flex;
+	.name{
+		width : 100px;
+	}
+	.resource{
+		width : 30px;
+	}
+	.influence{
+		width : 30px;
+	}
+	&:not(.owned){
+		opacity : 0.3;
+	}
+	&.exhausted{
+		color : red;
+	}
+	i.green{ color : green; }
+	i.red{ color : red; }
+	i.yellow{ color : yellow; }
+	i.blue{ color : blue; }
+}
