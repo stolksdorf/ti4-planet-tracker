@@ -3,17 +3,9 @@ const React       = require('react');
 const createClass = require('create-react-class');
 const cx          = require('classnames');
 
-const Planets = require('shared/planets.yaml');
-
 const Controls = require('./controls/controls.jsx');
-const Filter= require('./filter/filter.jsx');
 const Summary = require('./summary/summary.jsx');
-const Sorting = require('./sorting/sorting.jsx');
-const Planet = require('./planet/planet.jsx');
 const PlanetList = require('./planetList/planetList.jsx');
-
-//const PlanetList = require('./planets/planets.jsx');
-
 
 
 const Main = createClass({
@@ -24,8 +16,7 @@ const Main = createClass({
 	},
 	getInitialState(){
 		return {
-			//show : 'not_owned', // 'owned', 'both'
-			show : 'owned', // 'owned', 'both'
+			show : 'owned', // 'owned', 'not_owned'
 
 			exhausted : new Set([]),
 			owned : new Set([]),
@@ -44,16 +35,13 @@ const Main = createClass({
 		}
 		this.setState(this.state);
 	},
-
 	updateSet(key, val){
 		this.state[key] = new Set(val);
 		this.setState(this.state, ()=>{
-			console.log(Array.from(this.state[key]));
 			localStorage.setItem(key, Array.from(this.state[key]));
 		})
 	},
 	render(){
-		console.log(this.state);
 		return <div className='Main'>
 			<Controls
 				owned={this.state.owned}

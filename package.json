@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.script.js",
+    "lint": "eslint --fix \"**/*.{js,jsx}\"",
     "dev": "vitreum --dev",
-    "start": "node app.js"
+    "start": "node server.dev.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,8 @@
     "targets": [
       "client/main/main.jsx"
     ],
-    "paths"  : {
-      "build"  : "./docs"
+    "paths": {
+      "build": "./docs"
     }
   },
   "babel": {
@@ -46,5 +47,10 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "vitreum": "^5.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.6.0",
+    "eslint-plugin-react": "^7.11.1"
   }
 }

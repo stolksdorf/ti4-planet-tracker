@@ -6,6 +6,12 @@ const cx          = require('classnames');
 const Planets = require('shared/planets.yaml');
 const LongPress = require('shared/longPress.jsx');
 
+
+const isSame = (setA, setB)=>{
+	if(setA.size !== setB.size) return false;
+	return Array.from(setA).every((val)=>setB.has(val));
+}
+
 const Controls = createClass({
 	displayName : 'Controls',
 	getDefaultProps(){
@@ -32,6 +38,9 @@ const Controls = createClass({
 	},
 
 	render(){
+		const temp = isSame(this.props.exhausted, this.props.bookmark);
+
+
 		return <div className='Controls'>
 			<LongPress className='refresh'
 				wait={800}
@@ -62,7 +71,10 @@ const Controls = createClass({
 					this.props.updateBookmark(this.props.exhausted);
 				}}>
 
-				<i className='fa fa-bookmark' />
+				<i className={cx('fa', {
+					'fa-bookmark-o' : temp,
+					'fa-bookmark' : !temp
+				})} />
 			</LongPress>
 
 		</div>;

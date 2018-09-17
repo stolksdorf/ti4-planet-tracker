@@ -1,1 +1,43 @@
-.Planet{display:flex;cursor:pointer}.Planet .name{width:100px}.Planet .resource{width:30px}.Planet .influence{width:30px}.Planet:not(.owned){opacity:.3}.Planet.exhausted{color:red}.Planet i.green{color:green}.Planet i.red{color:red}.Planet i.yellow{color:yellow}.Planet i.blue{color:blue}.PlanetList .planets.owned .Planet.unowned{display:none}.PlanetList .planets.not_owned .Planet.owned{display:none}
+/** client\main\main.less **/
+/** client\main\controls\controls.less **/
+/** client\main\planetList\planetList.less **/
+.PlanetList .planets.owned .Planet.unowned {
+  display: none;
+}
+.PlanetList .planets.not_owned .Planet.owned {
+  display: none;
+}
+/** client\main\summary\summary.less **/
+/** client\main\planet\planet.less **/
+.Planet {
+  display: flex;
+  cursor: pointer;
+}
+.Planet .name {
+  width: 100px;
+}
+.Planet .resource {
+  width: 30px;
+}
+.Planet .influence {
+  width: 30px;
+}
+.Planet:not(.owned) {
+  opacity: 0.3;
+}
+.Planet.exhausted {
+  color: red;
+}
+.Planet i.green {
+  color: green;
+}
+.Planet i.red {
+  color: red;
+}
+.Planet i.yellow {
+  color: yellow;
+}
+.Planet i.blue {
+  color: blue;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6L0Ryb3Bib3gvcm9vdC9Qcm9ncmFtbWluZy9KYXZhc2NyaXB0L3RpNC1wbGFuZXQtdHJhY2tlci9jbGllbnQvbWFpbi9wbGFuZXRMaXN0L3BsYW5ldExpc3QubGVzcyIsIkM6L0Ryb3Bib3gvcm9vdC9Qcm9ncmFtbWluZy9KYXZhc2NyaXB0L3RpNC1wbGFuZXQtdHJhY2tlci9jbGllbnQvbWFpbi9wbGFuZXQvcGxhbmV0Lmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBSUUsV0FERCxTQUNFLE1BQ0EsUUFBTztFQUFVLGFBQUE7O0FBRWxCLFdBSkQsU0FJRSxVQUNBLFFBQU87RUFBUSxhQUFBOzs7O0FDUGxCO0VBQ0MsYUFBQTtFQUNBLGVBQUE7O0FBRkQsT0FHQztFQUNDLFlBQUE7O0FBSkYsT0FNQztFQUNDLFdBQUE7O0FBUEYsT0FTQztFQUNDLFdBQUE7O0FBRUQsT0FBQyxJQUFJO0VBQ0osWUFBQTs7QUFFRCxPQUFDO0VBQ0EsVUFBQTs7QUFoQkYsT0FrQkMsRUFBQztFQUFRLFlBQUE7O0FBbEJWLE9BbUJDLEVBQUM7RUFBTSxVQUFBOztBQW5CUixPQW9CQyxFQUFDO0VBQVMsYUFBQTs7QUFwQlgsT0FxQkMsRUFBQztFQUFPLFdBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuUGxhbmV0TGlzdHtcblxuXG5cdC5wbGFuZXRze1xuXHRcdCYub3duZWR7XG5cdFx0XHQuUGxhbmV0LnVub3duZWR7IGRpc3BsYXkgOiBub25lOyB9XG5cdFx0fVxuXHRcdCYubm90X293bmVke1xuXHRcdFx0LlBsYW5ldC5vd25lZHsgZGlzcGxheSA6IG5vbmU7IH1cblx0XHR9XG5cdH1cblxufSIsIlxuLlBsYW5ldHtcblx0ZGlzcGxheSA6IGZsZXg7XG5cdGN1cnNvcjogcG9pbnRlcjtcblx0Lm5hbWV7XG5cdFx0d2lkdGggOiAxMDBweDtcblx0fVxuXHQucmVzb3VyY2V7XG5cdFx0d2lkdGggOiAzMHB4O1xuXHR9XG5cdC5pbmZsdWVuY2V7XG5cdFx0d2lkdGggOiAzMHB4O1xuXHR9XG5cdCY6bm90KC5vd25lZCl7XG5cdFx0b3BhY2l0eSA6IDAuMztcblx0fVxuXHQmLmV4aGF1c3RlZHtcblx0XHRjb2xvciA6IHJlZDtcblx0fVxuXHRpLmdyZWVueyBjb2xvciA6IGdyZWVuOyB9XG5cdGkucmVkeyBjb2xvciA6IHJlZDsgfVxuXHRpLnllbGxvd3sgY29sb3IgOiB5ZWxsb3c7IH1cblx0aS5ibHVleyBjb2xvciA6IGJsdWU7IH1cbn0iXX0= */
