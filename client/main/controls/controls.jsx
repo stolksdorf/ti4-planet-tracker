@@ -3,52 +3,67 @@ const React       = require('react');
 const createClass = require('create-react-class');
 const cx          = require('classnames');
 
-const Planets = require('../../../planets.yaml');
-
+const Planets = require('shared/planets.yaml');
+const LongPress = require('shared/longPress.jsx');
 
 const Controls = createClass({
 	displayName : 'Controls',
 	getDefaultProps(){
 		return {
-			onRefresh : ()=>{},
-			onReset : ()=>{},
-			onRewind : ()=>{},
+			typeVisible : 'not_owned', //'owned', 'both'
+			onChangeVisible : ()=>{},
+
 			owned : new Set([]),
-			exhausted : new Set([])
+			exhausted : new Set([]),
+			bookmark : new Set([]),
+
+			updateExhausted : ()=>{},
+			updateOwned : ()=>{},
+			updateBookmark : ()=>{},
 		};
 	},
-	getSum(){
-		const owned = Planets.filter((planet)=>this.props.owned.has(planet.name));
+	toggleShow(){
+		// if(this.props.typeVisible == 'both') return this.props.onChangeVisible('owned');
+		// if(this.props.typeVisible == 'owned') return this.props.onChangeVisible('not_owned');
+		// if(this.props.typeVisible == 'not_owned') return this.props.onChangeVisible('both');
 
-		return owned.reduce((acc, planet)=>{
-			acc.influence_total += planet.influence;
-			acc.resource_total += planet.resource;
-			if(!this.props.exhausted.has(planet.name)){
-				acc.influence += planet.influence;
-				acc.resource += planet.resource;
-			}
-			return acc;
-		}, {
-			influence : 0, influence_total : 0,
-			resource : 0, resource_total : 0
-		})
+		if(this.props.typeVisible == 'owned') return this.props.onChangeVisible('not_owned');
+		if(this.props.typeVisible == 'not_owned') return this.props.onChangeVisible('owned');
 	},
+
 	render(){
-		const count = this.getSum();
-
 		return <div className='Controls'>
+			<LongPress className='refresh'
+				wait={800}
+				onPress={()=>this.props.updateExhausted(new Set([]))}
+				onLongPress={()=>{
+					this.props.updateExhausted(new Set([]));
+					this.props.updateOwned(new Set([]));
+				}}>
+				<i className='fa fa-refresh' />
+			</LongPress>
 
-			<div className='resource'>
-				<label>resource</label>
-				<h2>{count.resource}</h2>
-				<small>{count.resource_total}</small>
-			</div>
-			<div className='influence'>
-				<label>influence</label>
-				<h2>{count.influence}</h2>
-				<small>{count.influence_total}</small>
-			</div>
 
+			<LongPress className='ownership' onPress={this.toggleShow}>
+				<i className={cx('fa', {
+					'fa-circle' : this.props.typeVisible == 'owned',
+					'fa-circle-o' : this.props.typeVisible == 'not_owned',
+					'fa-stop-circle-o' : this.props.typeVisible == 'both',
+				})} />
+			</LongPress>
+
+			<LongPress className='bookmark'
+				onPress={()=>{
+					const temp = this.props.bookmark;
+					this.props.updateBookmark(this.props.exhausted);
+					this.props.updateExhausted(temp);
+				}}
+				onLongPress={()=>{
+					this.props.updateBookmark(this.props.exhausted);
+				}}>
+
+				<i className='fa fa-bookmark' />
+			</LongPress>
 
 		</div>;
 	}

@@ -3,6 +3,8 @@ const React       = require('react');
 const createClass = require('create-react-class');
 const cx          = require('classnames');
 
+const LongPress = require('shared/longPress.jsx');
+
 
 const Planet = createClass({
 	getDefaultProps(){
@@ -18,17 +20,6 @@ const Planet = createClass({
 			onLongPress : ()=>{},
 		};
 	},
-	timer : null,
-	handlePress(){
-		this.timer = setTimeout(()=>{
-			this.props.onLongPress();
-			this.timer = false;
-		}, 500);
-	},
-	handleRelease(){
-		if(this.timer !== false) this.props.onPress();
-		clearInterval(this.timer);
-	},
 	renderType(){
 		if(!this.props.type) return null;
 		const types = {
@@ -42,9 +33,9 @@ const Planet = createClass({
 	},
 	render(){
 		const { exhausted, owned } = this.props;
-		return <div
-			className={cx('Planet', { exhausted, owned })}
-			onMouseDown={this.handlePress} onMouseUp={this.handleRelease}>
+		return <LongPress
+			className={cx('Planet', { exhausted, owned, unowned : !owned })}
+			onPress={this.props.onPress} onLongPress={this.props.onLongPress}>
 			<div className='name'>
 				{this.props.name}
 
@@ -52,7 +43,7 @@ const Planet = createClass({
 			</div>
 			<div className='resource'>{this.props.resource}</div>
 			<div className='influence'>{this.props.influence}</div>
-		</div>
+		</LongPress>
 	}
 
 })

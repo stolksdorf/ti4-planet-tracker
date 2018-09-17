@@ -154,7 +154,7 @@
   resource: 2
   influence: 3
   type: home
-- name: [0.0.0]
+- name: '[0.0.0]'
   resource: 5
   influence: 0
   type: home

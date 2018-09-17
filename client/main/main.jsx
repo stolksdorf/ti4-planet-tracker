@@ -3,11 +3,14 @@ const React       = require('react');
 const createClass = require('create-react-class');
 const cx          = require('classnames');
 
-const Planets = require('../../planets.yaml');
+const Planets = require('shared/planets.yaml');
 
 const Controls = require('./controls/controls.jsx');
 const Filter= require('./filter/filter.jsx');
+const Summary = require('./summary/summary.jsx');
+const Sorting = require('./sorting/sorting.jsx');
 const Planet = require('./planet/planet.jsx');
+const PlanetList = require('./planetList/planetList.jsx');
 
 //const PlanetList = require('./planets/planets.jsx');
 
@@ -21,13 +24,12 @@ const Main = createClass({
 	},
 	getInitialState(){
 		return {
-			sort : 'name', //'influence', 'resource'
-			show : 'both', // 'owned', 'not_owned'
-			//showOwn : false,
-
+			//show : 'not_owned', // 'owned', 'both'
+			show : 'owned', // 'owned', 'both'
 
 			exhausted : new Set([]),
 			owned : new Set([]),
+			bookmark : new Set([])
 		}
 	},
 	componentDidMount(){
@@ -37,76 +39,54 @@ const Main = createClass({
 		if(localStorage.getItem('owned')){
 			this.state.owned = new Set(localStorage.getItem('owned').split(','));
 		}
+		if(localStorage.getItem('bookmark')){
+			this.state.bookmark = new Set(localStorage.getItem('bookmark').split(','));
+		}
 		this.setState(this.state);
 	},
-	updateStorage(){
-		localStorage.setItem('owned', Array.from(this.state.owned));
-		localStorage.setItem('exhausted', Array.from(this.state.exhausted));
-	},
-	toggleShow(){
-		if(this.state.show == 'both') return this.setState({show : 'owned'});
-		if(this.state.show == 'owned') return this.setState({show : 'not_owned'});
-		if(this.state.show == 'not_owned') return this.setState({show : 'both'});
-	},
-	exhaust(name){
-		if(!this.state.owned.has(name)) return;
-		if(this.state.exhausted.has(name)){
-			this.state.exhausted.delete(name);
-		}else{
-			this.state.exhausted.add(name);
-		}
-		this.setState(this.state, this.updateStorage);
-	},
-	own(name){
-		if(this.state.owned.has(name)){
-			this.state.exhausted.delete(name)
-			this.state.owned.delete(name)
-		}else{
-			this.state.owned.add(name);
-		}
-		this.setState(this.state, this.updateStorage);
-	},
 
-	getSorted(){
-		return this.getOwned(this.state.showOwn).sort((a, b)=>{
-			//TODO: fix\
-			return a[this.state.sort] - b[this.state.sort]
-		});
+	updateSet(key, val){
+		this.state[key] = new Set(val);
+		this.setState(this.state, ()=>{
+			console.log(Array.from(this.state[key]));
+			localStorage.setItem(key, Array.from(this.state[key]));
+		})
 	},
 	render(){
+		console.log(this.state);
 		return <div className='Main'>
 			<Controls
 				owned={this.state.owned}
 				exhausted={this.state.exhausted}
-				onRefresh={()=>this.setState({exhausted : new Set([])})}
-				onReset={()=>{this.setState({
-					owned : new Set([]),
-					exhausted : new Set([]),
-				})}}
-				onRewind={(exhausted)=>this.setState({ exhausted })}
+				bookmark={this.state.bookmark}
+
+				updateExhausted={(exhausted)=>this.updateSet('exhausted', exhausted)}
+				updateOwned={(owned)=>this.updateSet('owned', owned)}
+				updateBookmark={(bookmark)=>this.updateSet('bookmark', bookmark)}
+
+				typeVisible={this.state.show}
+				onChangeVisible={(show)=>this.setState({ show })}
 			/>
 
 			<hr />
 
-			<Filter
-				value={this.state.sort}
-				onChange={(sort)=>this.setState({sort})}
+			<Summary
+				owned={this.state.owned}
+				exhausted={this.state.exhausted}
 			/>
 
 			<hr />
 
-			<div className={cx('planetList', this.state.show)}>
-				{Planets.map((planet)=>{
-					return <Planet
-						key={planet.name}
-						onPress={()=>this.exhaust(planet.name)}
-						onLongPress={()=>this.own(planet.name)}
-						exhausted={this.state.exhausted.has(planet.name)}
-						owned={this.state.owned.has(planet.name)}
-						{...planet}
-					/>
-				})}
-			</div>
+			<PlanetList
+				updateExhausted={(exhausted)=>this.updateSet('exhausted', exhausted)}
+				updateOwned={(owned)=>this.updateSet('owned', owned)}
+
+				owned={this.state.owned}
+				exhausted={this.state.exhausted}
+				show={this.state.show}
+			/>
+
+
 		</div>;
 	}
 });
