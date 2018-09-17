@@ -41,12 +41,11 @@ const PlanetList = createClass({
 		this.props.updateOwned(this.props.owned);
 	},
 	getSorted(){
-		const sort = this.state.sort;
-		return Planets.sort((a, b)=>{
-			if(sort == 'name') return a.name.localeCompare(b.name);
-			if(sort == 'influence') return b.influence - a.influence;
-			if(sort == 'resource') return b.resource - a.resource;
-		});
+		const sortTerm = this.state.sort;
+		let result = Planets.sort((a, b)=>a.name.localeCompare(b.name));
+		if(sortTerm == 'influence') return result.sort((a,b)=>b.influence - a.influence);
+		if(sortTerm == 'resource') return result.sort((a,b)=>b.resource - a.resource);
+		return result;
 	},
 	render(){
 		return <div className='PlanetList'>

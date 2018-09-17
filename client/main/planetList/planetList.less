@@ -1,6 +1,12 @@
+
 .PlanetList{
-
-
+	.sorting{
+		display : flex;
+		cursor  : pointer;
+		&>.selected{
+			background-color : red;
+		}
+	}
 	.planets{
 		&.owned{
 			.Planet.unowned{ display : none; }
@@ -9,5 +15,4 @@
 			.Planet.owned{ display : none; }
 		}
 	}
-
 }

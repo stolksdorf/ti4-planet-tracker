@@ -32,6 +32,7 @@ const Controls = createClass({
 		// if(this.props.typeVisible == 'owned') return this.props.onChangeVisible('not_owned');
 		// if(this.props.typeVisible == 'not_owned') return this.props.onChangeVisible('both');
 
+		if(this.props.typeVisible == 'both') return this.props.onChangeVisible('owned');
 		if(this.props.typeVisible == 'owned') return this.props.onChangeVisible('not_owned');
 		if(this.props.typeVisible == 'not_owned') return this.props.onChangeVisible('owned');
 	},
@@ -52,7 +53,7 @@ const Controls = createClass({
 			</LongPress>
 
 
-			<LongPress className='ownership' onPress={this.toggleShow}>
+			<LongPress className='ownership' onPress={this.toggleShow} onLongPress={()=>this.props.onChangeVisible('both')}>
 				<i className={cx('fa', {
 					'fa-circle'        : this.props.typeVisible == 'owned',
 					'fa-circle-o'      : this.props.typeVisible == 'not_owned',
