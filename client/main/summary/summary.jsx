@@ -10,8 +10,8 @@ const Summary = createClass({
 	displayName : 'Summary',
 	getDefaultProps(){
 		return {
-			owned : new Set([]),
-			exhausted : new Set([])
+			owned     : new Set([]),
+			exhausted : new Set([]),
 		};
 	},
 	getSum(){
@@ -26,9 +26,9 @@ const Summary = createClass({
 			}
 			return acc;
 		}, {
-			influence : 0, influence_total : 0,
-			resource : 0, resource_total : 0
-		})
+			influence       : 0, influence_total : 0,
+			resource        : 0, resource_total  : 0,
+		});
 	},
 	render(){
 		const count = this.getSum();
@@ -45,7 +45,7 @@ const Summary = createClass({
 				<small>{count.influence_total}</small>
 			</div>
 		</div>;
-	}
+	},
 });
 
 module.exports = Summary;

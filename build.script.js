@@ -2,7 +2,7 @@ const build = require('vitreum/build');
 const fs = require('fs');
 
 String.prototype.replaceAll = function (find, replace) {
-	var str = this;
+	const str = this;
 	return str.replace(new RegExp(find, 'g'), replace);
 };
 
@@ -13,6 +13,6 @@ build().then(()=>{
 		.replace('/libs.js', 'libs.js')
 		.replaceAll('/main/bundle', 'main/bundle')
 		.replaceAll('/assets', 'assets')
-	)
+	);
 	console.log('Built index.html');
-})
+});

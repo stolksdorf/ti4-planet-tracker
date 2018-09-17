@@ -13,17 +13,17 @@ const PlanetList = createClass({
 	getDefaultProps(){
 		return {
 			updateExhausted : ()=>{},
-			updateOwned : ()=>{},
+			updateOwned     : ()=>{},
 
-			owned : new Set([]),
+			owned     : new Set([]),
 			exhausted : new Set([]),
-			show : 'owned'
+			show      : 'owned',
 		};
 	},
 	getInitialState(){
 		return {
 			sort : 'name', //'influence', 'resource'
-		}
+		};
 	},
 	exhaust(name){
 		if(!this.props.owned.has(name)) return;
@@ -51,16 +51,16 @@ const PlanetList = createClass({
 	render(){
 		return <div className='PlanetList'>
 			<div className='sorting'>
-				<div className={cx('name', { selected : this.state.sort == 'name'})}
-					onClick={()=>this.setState({sort:'name'})}>
+				<div className={cx('name', { selected : this.state.sort == 'name' })}
+					onClick={()=>this.setState({ sort : 'name' })}>
 					name
 				</div>
-				<div className={cx('resource', { selected : this.state.sort == 'resource'})}
-					onClick={()=>this.setState({sort:'resource'})}>
+				<div className={cx('resource', { selected : this.state.sort == 'resource' })}
+					onClick={()=>this.setState({ sort : 'resource' })}>
 					resource
 				</div>
-				<div className={cx('influence', { selected : this.state.sort == 'influence'})}
-					onClick={()=>this.setState({sort:'influence'})}>
+				<div className={cx('influence', { selected : this.state.sort == 'influence' })}
+					onClick={()=>this.setState({ sort : 'influence' })}>
 					influ
 				</div>
 			</div>
@@ -73,12 +73,12 @@ const PlanetList = createClass({
 						exhausted={this.props.exhausted.has(planet.name)}
 						owned={this.props.owned.has(planet.name)}
 						{...planet}
-					/>
+					/>;
 				})}
 			</div>
 
 		</div>;
-	}
+	},
 });
 
 module.exports = PlanetList;

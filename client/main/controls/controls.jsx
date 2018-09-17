@@ -3,29 +3,28 @@ const React       = require('react');
 const createClass = require('create-react-class');
 const cx          = require('classnames');
 
-const Planets = require('shared/planets.yaml');
 const LongPress = require('shared/longPress.jsx');
 
 
 const isSame = (setA, setB)=>{
 	if(setA.size !== setB.size) return false;
 	return Array.from(setA).every((val)=>setB.has(val));
-}
+};
 
 const Controls = createClass({
 	displayName : 'Controls',
 	getDefaultProps(){
 		return {
-			typeVisible : 'not_owned', //'owned', 'both'
+			typeVisible     : 'not_owned', //'owned', 'both'
 			onChangeVisible : ()=>{},
 
-			owned : new Set([]),
+			owned     : new Set([]),
 			exhausted : new Set([]),
-			bookmark : new Set([]),
+			bookmark  : new Set([]),
 
 			updateExhausted : ()=>{},
-			updateOwned : ()=>{},
-			updateBookmark : ()=>{},
+			updateOwned     : ()=>{},
+			updateBookmark  : ()=>{},
 		};
 	},
 	toggleShow(){
@@ -55,8 +54,8 @@ const Controls = createClass({
 
 			<LongPress className='ownership' onPress={this.toggleShow}>
 				<i className={cx('fa', {
-					'fa-circle' : this.props.typeVisible == 'owned',
-					'fa-circle-o' : this.props.typeVisible == 'not_owned',
+					'fa-circle'        : this.props.typeVisible == 'owned',
+					'fa-circle-o'      : this.props.typeVisible == 'not_owned',
 					'fa-stop-circle-o' : this.props.typeVisible == 'both',
 				})} />
 			</LongPress>
@@ -73,12 +72,12 @@ const Controls = createClass({
 
 				<i className={cx('fa', {
 					'fa-bookmark-o' : temp,
-					'fa-bookmark' : !temp
+					'fa-bookmark'   : !temp,
 				})} />
 			</LongPress>
 
 		</div>;
-	}
+	},
 });
 
 module.exports = Controls;

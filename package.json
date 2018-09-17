@@ -29,6 +29,10 @@
       "build": "./docs"
     }
   },
+  "eslintIgnore": [
+    "docs/*",
+    "node_modules/*"
+  ],
   "babel": {
     "presets": [
       "@babel/preset-react"

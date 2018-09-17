@@ -9,27 +9,27 @@ const LongPress = require('shared/longPress.jsx');
 const Planet = createClass({
 	getDefaultProps(){
 		return {
-			name : '',
+			name      : '',
 			exhausted : false,
-			owned: false,
+			owned     : false,
 			influence : 0,
-			resource : 0,
-			type : false,
+			resource  : 0,
+			type      : false,
 
-			onPress : ()=>{},
+			onPress     : ()=>{},
 			onLongPress : ()=>{},
 		};
 	},
 	renderType(){
 		if(!this.props.type) return null;
 		const types = {
-			home : 'home',
+			home   : 'home',
 			yellow : 'circle',
-			red : 'circle',
-			blue : 'circle',
+			red    : 'circle',
+			blue   : 'circle',
 			green  : 'circle',
-		}
-		return <i className={`fa fa-${types[this.props.type]} ${this.props.type}`} />
+		};
+		return <i className={`fa fa-${types[this.props.type]} ${this.props.type}`} />;
 	},
 	render(){
 		const { exhausted, owned } = this.props;
@@ -43,8 +43,8 @@ const Planet = createClass({
 			</div>
 			<div className='resource'>{this.props.resource}</div>
 			<div className='influence'>{this.props.influence}</div>
-		</LongPress>
-	}
+		</LongPress>;
+	},
 
-})
+});
 module.exports = Planet;

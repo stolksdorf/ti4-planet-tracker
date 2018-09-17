@@ -5,8 +5,8 @@ const createClass = require('create-react-class');
 const LongPress = createClass({
 	getDefaultProps(){
 		return {
-			wait : 500,
-			onPress : ()=>{},
+			wait        : 500,
+			onPress     : ()=>{},
 			onLongPress : ()=>{},
 		};
 	},
@@ -25,9 +25,9 @@ const LongPress = createClass({
 		return <div className={this.props.className}
 			onMouseDown={this.handlePress}
 			onMouseUp={this.handleRelease}
-			>{this.props.children}
-		</div>
-	}
+		>{this.props.children}
+		</div>;
+	},
 });
 
 module.exports = LongPress;

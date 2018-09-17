@@ -19,9 +19,9 @@ const Main = createClass({
 			show : 'owned', // 'owned', 'not_owned'
 
 			exhausted : new Set([]),
-			owned : new Set([]),
-			bookmark : new Set([])
-		}
+			owned     : new Set([]),
+			bookmark  : new Set([]),
+		};
 	},
 	componentDidMount(){
 		if(localStorage.getItem('exhausted')){
@@ -39,7 +39,7 @@ const Main = createClass({
 		this.state[key] = new Set(val);
 		this.setState(this.state, ()=>{
 			localStorage.setItem(key, Array.from(this.state[key]));
-		})
+		});
 	},
 	render(){
 		return <div className='Main'>
@@ -76,7 +76,7 @@ const Main = createClass({
 
 
 		</div>;
-	}
+	},
 });
 
 module.exports = Main;
