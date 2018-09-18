@@ -2,14 +2,18 @@
 .Planet{
 	display : flex;
 	cursor: pointer;
+	user-select: none;
+	font-size: 1.3em;
+	padding : 5px 0px;
+	position: relative;
+
+
 	.name{
-		width : 100px;
+		padding-left: 25px;
 	}
-	.resource{
-		width : 30px;
-	}
-	.influence{
-		width : 30px;
+	.resource, .influence{
+		width : 40px;
+		text-align : center;
 	}
 	&:not(.owned){
 		opacity : 0.3;
@@ -17,6 +21,13 @@
 	&.exhausted{
 		color : red;
 	}
+
+	i{
+		position: absolute;
+		left : 5px;
+		font-size: 0.7em;
+	}
+
 	i.green{ color : green; }
 	i.red{ color : red; }
 	i.yellow{ color : yellow; }

@@ -34,10 +34,13 @@ const PlanetList = createClass({
 		this.props.updateExhausted(this.props.exhausted);
 	},
 	own(name){
-		this.props.owned.has(name)
-			? this.props.owned.delete(name)
-			: this.props.owned.add(name);
-
+		if(this.props.owned.has(name)){
+			this.props.owned.delete(name);
+			this.props.exhausted.delete(name);
+			this.props.updateExhausted(this.props.exhausted);
+		}else{
+			this.props.owned.add(name);
+		}
 		this.props.updateOwned(this.props.owned);
 	},
 	getSorted(){
@@ -56,11 +59,11 @@ const PlanetList = createClass({
 				</div>
 				<div className={cx('resource', { selected : this.state.sort == 'resource' })}
 					onClick={()=>this.setState({ sort : 'resource' })}>
-					resource
+					<i className='fa fa-cubes' />
 				</div>
 				<div className={cx('influence', { selected : this.state.sort == 'influence' })}
 					onClick={()=>this.setState({ sort : 'influence' })}>
-					influ
+					<i className='fa fa-gg' />
 				</div>
 			</div>
 			<div className={cx('planets', this.props.show)}>

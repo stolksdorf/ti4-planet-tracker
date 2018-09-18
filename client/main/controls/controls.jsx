@@ -42,7 +42,7 @@ const Controls = createClass({
 
 
 		return <div className='Controls'>
-			<LongPress className='refresh'
+			<LongPress className='btn refresh'
 				wait={800}
 				onPress={()=>this.props.updateExhausted(new Set([]))}
 				onLongPress={()=>{
@@ -53,7 +53,7 @@ const Controls = createClass({
 			</LongPress>
 
 
-			<LongPress className='ownership' onPress={this.toggleShow} onLongPress={()=>this.props.onChangeVisible('both')}>
+			<LongPress className='btn ownership' onPress={this.toggleShow} onLongPress={()=>this.props.onChangeVisible('both')}>
 				<i className={cx('fa', {
 					'fa-circle'        : this.props.typeVisible == 'owned',
 					'fa-circle-o'      : this.props.typeVisible == 'not_owned',
@@ -61,7 +61,7 @@ const Controls = createClass({
 				})} />
 			</LongPress>
 
-			<LongPress className='bookmark'
+			<LongPress className='btn bookmark'
 				onPress={()=>{
 					const temp = this.props.bookmark;
 					this.props.updateBookmark(this.props.exhausted);

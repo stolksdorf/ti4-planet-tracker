@@ -56,14 +56,10 @@ const Main = createClass({
 				onChangeVisible={(show)=>this.setState({ show })}
 			/>
 
-			<hr />
-
 			<Summary
 				owned={this.state.owned}
 				exhausted={this.state.exhausted}
 			/>
-
-			<hr />
 
 			<PlanetList
 				updateExhausted={(exhausted)=>this.updateSet('exhausted', exhausted)}

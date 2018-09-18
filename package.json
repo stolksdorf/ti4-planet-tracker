@@ -27,7 +27,8 @@
     ],
     "paths": {
       "build": "./docs"
-    }
+    },
+    "template": "./client/template.html.js"
   },
   "eslintIgnore": [
     "docs/*",

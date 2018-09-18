@@ -1,6 +1,17 @@
 .Controls{
 	display: flex;
-	&>*{
+	.btn{
 		cursor: pointer;
+		flex-grow : 1;
+		text-align : center;
+		vertical-align: middle;
+		&:hover{
+			background-color: #555;
+		}
+		&+.btn{
+			border-left : 1px solid white;
+		}
+		height : 30px;
 	}
+	border-bottom: 1px solid white;
 }

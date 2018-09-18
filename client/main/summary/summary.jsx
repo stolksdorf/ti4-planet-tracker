@@ -38,11 +38,13 @@ const Summary = createClass({
 				<label>resource</label>
 				<h2>{count.resource}</h2>
 				<small>{count.resource_total}</small>
+				<i className='fa fa-cubes' />
 			</div>
 			<div className='influence'>
 				<label>influence</label>
 				<h2>{count.influence}</h2>
 				<small>{count.influence_total}</small>
+				<i className='fa fa-gg' />
 			</div>
 		</div>;
 	},
