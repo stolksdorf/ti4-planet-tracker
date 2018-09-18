@@ -1,11 +1,10 @@
 
 .PlanetList{
-	border-top: 1px solid white;
-
+	border-top : 1px solid white;
 	.sorting{
-		display : flex;
-		cursor  : pointer;
-		border-bottom: 1px solid white;
+		display       : flex;
+		cursor        : pointer;
+		border-bottom : 1px solid white;
 		&>.selected{
 			background-color : red;
 		}
@@ -14,8 +13,8 @@
 		}
 	}
 	.planets{
-		overflow-y: scroll;
-		max-height: 80vh;
+		overflow-y : scroll;
+		max-height : 80vh;
 		&.owned{
 			.Planet.unowned{ display : none; }
 		}
@@ -23,15 +22,13 @@
 			.Planet.owned{ display : none; }
 		}
 	}
-
 	.sorting, .planets{
 		.name{
 			flex-grow : 1;
 		}
 		.resource, .influence{
-			width : 40px;
+			width      : 40px;
 			text-align : center;
 		}
-
 	}
 }

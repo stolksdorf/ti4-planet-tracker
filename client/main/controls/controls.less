@@ -1,17 +1,18 @@
+
 .Controls{
-	display: flex;
+	display       : flex;
+	border-bottom : 1px solid white;
 	.btn{
-		cursor: pointer;
-		flex-grow : 1;
-		text-align : center;
-		vertical-align: middle;
+		vertical-align : middle;
+		height         : 30px;
+		cursor         : pointer;
+		text-align     : center;
+		flex-grow      : 1;
 		&:hover{
-			background-color: #555;
+			background-color : #555;
 		}
 		&+.btn{
 			border-left : 1px solid white;
 		}
-		height : 30px;
 	}
-	border-bottom: 1px solid white;
 }

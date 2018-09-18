@@ -38,16 +38,16 @@ const PlanetList = createClass({
 			this.props.owned.delete(name);
 			this.props.exhausted.delete(name);
 			this.props.updateExhausted(this.props.exhausted);
-		}else{
+		} else {
 			this.props.owned.add(name);
 		}
 		this.props.updateOwned(this.props.owned);
 	},
 	getSorted(){
 		const sortTerm = this.state.sort;
-		let result = Planets.sort((a, b)=>a.name.localeCompare(b.name));
-		if(sortTerm == 'influence') return result.sort((a,b)=>b.influence - a.influence);
-		if(sortTerm == 'resource') return result.sort((a,b)=>b.resource - a.resource);
+		const result = Planets.sort((a, b)=>a.name.localeCompare(b.name));
+		if(sortTerm == 'influence') return result.sort((a, b)=>b.influence - a.influence);
+		if(sortTerm == 'resource') return result.sort((a, b)=>b.resource - a.resource);
 		return result;
 	},
 	render(){

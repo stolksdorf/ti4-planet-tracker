@@ -1,4 +1,4 @@
-module.exports = (head, body, tail) => {
+module.exports = (head, body, tail)=>{
 	return `<!-- Doctype HTML5 -->
 
 <!DOCTYPE html>
