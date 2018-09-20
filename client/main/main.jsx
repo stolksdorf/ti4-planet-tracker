@@ -7,6 +7,8 @@ const Controls = require('./controls/controls.jsx');
 const Summary = require('./summary/summary.jsx');
 const PlanetList = require('./planetList/planetList.jsx');
 
+const {Title} = require('vitreum/headtags');
+
 
 const Main = createClass({
 	displayName : 'Main',
@@ -43,6 +45,7 @@ const Main = createClass({
 	},
 	render(){
 		return <div className='Main'>
+			<Title>TI4 Planet Tracker</Title>
 			<Controls
 				owned={this.state.owned}
 				exhausted={this.state.exhausted}
