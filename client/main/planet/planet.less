@@ -5,27 +5,33 @@
 	padding     : 5px 0px;
 	cursor      : pointer;
 	font-size   : 1.3em;
+	font-size   : 1.8em;
 	user-select : none;
 	.name{
-		padding-left : 25px;
+		padding-left : 35px;
 	}
 	.resource, .influence{
-		width      : 40px;
+		width      : 50px;
 		text-align : center;
 	}
 	&:not(.owned){
 		opacity : 0.3;
 	}
 	&.exhausted{
-		color : red;
+		background-color : fade(@orange, 30%);
+		font-style       : italic;
+		//opacity : 0.7;
+		font-weight      : 300;
 	}
 	i{
-		position  : absolute;
-		left      : 5px;
-		font-size : 0.7em;
+		position       : absolute;
+		vertical-align : middle;
+		top            : 13px;
+		left           : 9px;
+		font-size      : 0.7em;
 	}
-	i.green{ color : green; }
-	i.red{ color : red; }
-	i.yellow{ color : yellow; }
-	i.blue{ color : blue; }
+	i.green{ color : @green; }
+	i.red{ color : @red; }
+	i.yellow{ color : @yellow; }
+	i.blue{ color : @blue; }
 }
